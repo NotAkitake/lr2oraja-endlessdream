@@ -85,6 +85,8 @@ public class PlayConfigurationView implements Initializable {
     private Tab streamTab;
 	@FXML
 	private Tab discordTab;
+  @FXML
+  private Tab obsTab;
 	@FXML
 	private HBox controlPanel;
 
@@ -277,6 +279,8 @@ public class PlayConfigurationView implements Initializable {
     private StreamEditorView streamController;
 	@FXML
 	private DiscordConfigurationView discordController;
+  @FXML
+  private ObsConfigurationView obsController;
 	@FXML
 	private TrainerView trainerController;
 
@@ -339,6 +343,7 @@ public class PlayConfigurationView implements Initializable {
 		notesdisplaytiming.setValueFactoryValues(PlayerConfig.JUDGETIMING_MIN, PlayerConfig.JUDGETIMING_MAX, 0, 1);
 		resourceController.init(this);
 		discordController.init(this);
+    obsController.init(this);
 
 		checkNewVersion();
 		Logger.getGlobal().info("初期化時間(ms) : " + (System.currentTimeMillis() - t));
@@ -395,6 +400,7 @@ public class PlayConfigurationView implements Initializable {
 
 		resourceController.update(config);
 		discordController.update(config);
+    obsController.update(config);
 
 		skinController.update(config);
         // int b = Boolean.valueOf(config.getJKOC()).compareTo(false);
@@ -543,6 +549,7 @@ public class PlayConfigurationView implements Initializable {
 
 		resourceController.commit();
 		discordController.commit();
+    obsController.commit();
 
         // jkoc_hack is integer but *.setJKOC needs boolean type
 
@@ -720,7 +727,8 @@ public class PlayConfigurationView implements Initializable {
 		irTab.setDisable(true);
 		streamTab.setDisable(true);
 		discordTab.setDisable(true);
-		controlPanel.setDisable(true);
+		obsTab.setDisable(true);
+    controlPanel.setDisable(true);
 
 		// Minimise the stage after start
 		Stage stage = (Stage) root.getScene().getWindow();
