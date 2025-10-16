@@ -184,6 +184,11 @@ public class Config implements Validatable {
 	 */
 	private String[] webhookUrl = new String[0];
 
+  private boolean useObsWs = false;
+  private String obsWsHost = "localhost";
+  private int obsWsPort = 4455;
+  private boolean obsWsAuth = false;
+  private String obsWsPass = "";
 
 	private static final String[] DEFAULT_TABLEURL = { "http://bmsnormal2.syuriken.jp/table.html",
 			"http://bmsnormal2.syuriken.jp/table_insane.html",
@@ -415,7 +420,23 @@ public class Config implements Validatable {
 	public void setUseDiscordRPC(boolean useDiscordRPC) {
 		this.useDiscordRPC = useDiscordRPC;
 	}
+
+  public boolean isUseObsWs() {
+    return useObsWs;
+  }
 	
+  public void setUseObsWs(boolean useObsWs) {
+    this.useObsWs = useObsWs;
+  }
+
+  public boolean isObsWsUseAuth() {
+    return obsWsAuth;
+  }
+	
+  public void setObsWsUseAuth(boolean obsWsAuth) {
+    this.obsWsAuth = obsWsAuth;
+  }
+
 	public boolean isSetClipboardWhenScreenshot() {
 		return setClipboardScreenshot;
 	}
@@ -604,6 +625,18 @@ public class Config implements Validatable {
     public int getWebhookOption() { return webhookOption; }
 
     public void setWebhookOption(int webhookOption) { this.webhookOption = webhookOption; }
+
+  public String getObsWsHost() { return obsWsHost; }
+  
+  public void setObsWsHost(String obsWsHost) { this.obsWsHost = obsWsHost; }
+
+  public int getObsWsPort() { return obsWsPort; }
+  
+  public void setObsWsPort(int obsWsPort) { this.obsWsPort = obsWsPort; }
+
+  public String getObsWsPass() { return obsWsPass; }
+  
+  public void setObsWsPass(String obsWsPass) { this.obsWsPass = obsWsPass; }
 
     public boolean validate() {
 		displaymode = (displaymode != null) ? displaymode : DisplayMode.WINDOW;
