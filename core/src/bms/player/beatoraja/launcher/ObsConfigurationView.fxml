@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import bms.player.beatoraja.launcher.EditableTableView?>
+<?import bms.player.beatoraja.launcher.NumericSpinner?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<HBox xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1"
+  fx:controller="bms.player.beatoraja.launcher.ObsConfigurationView" spacing="20">
+  <padding>
+    <Insets left="10.0" top="10.0" right="10.0" bottom="10.0"/>
+  </padding>
+  <VBox prefWidth="400.0" spacing="15">
+    <VBox spacing="10" styleClass="settings-group">
+      <CheckBox fx:id="obsWsEnabled" mnemonicParsing="false"
+        prefHeight="25.0" text="%OBSWS_ENABLED"/>
+      <HBox spacing="15">
+        <VBox spacing="5" alignment="TOP_LEFT">
+          <Label text="%OBSWS_HOST" prefHeight="25.0"/>
+          <TextField fx:id="obsWsHost" prefHeight="25.0" prefWidth="200.0"/>
+        </VBox>
+        <VBox spacing="5" alignment="TOP_LEFT">
+          <Label text="%OBSWS_PORT" prefHeight="25.0"/>
+          <HBox spacing="10" alignment="CENTER_LEFT">
+            <NumericSpinner fx:id="obsWsPort" editable="true" prefWidth="110.0" prefHeight="25.0">
+              <valueFactory>
+                <SpinnerValueFactory.IntegerSpinnerValueFactory
+                  amountToStepBy="1" initialValue="4455" max="65535" min="0"/>
+              </valueFactory>
+            </NumericSpinner>
+            <Button fx:id="obsTestButton" text="%OBSWS_TEST" mnemonicParsing="false"
+              onAction="#testObsConnection" prefHeight="25.0" prefWidth="80.0"/>
+            <Label fx:id="obsTestResult" text="" prefHeight="25.0" prefWidth="120.0"/>
+          </HBox>
+        </VBox>
+      </HBox>
+    </VBox>
+ 
+    <Separator/>
+
+    <VBox spacing="10" styleClass="settings-group">
+      <CheckBox fx:id="obsWsAuth" mnemonicParsing="false"
+        prefHeight="25.0" text="%OBSWS_AUTH"/>
+      <VBox spacing="5" alignment="TOP_LEFT">
+        <Label text="%OBSWS_PASS" prefHeight="25.0"/>
+        <PasswordField fx:id="obsWsPass" prefHeight="25.0" prefWidth="200.0"/>
+      </VBox>
+    </VBox>
+  </VBox>
+  <VBox HBox.hgrow="ALWAYS"/>
+</HBox>
